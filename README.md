@@ -10,7 +10,8 @@ Required Softwares for Machine Learning Project
 4. [Git Cli] : (https://git-scm.com/downloads)
 
 Creating Conda Environment
-````conda create -p venv python==3.7 -y 
+````
+conda create -p venv python==3.7 -y 
 ``````
 activate conda env
 
