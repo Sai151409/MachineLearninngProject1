@@ -30,8 +30,19 @@ OR
 
 git add file_name
 .......
+ Note : To ignore file or folder from git we can write name of file/folder in .gitignore file
 
+.......
+To check the status of git 
 
-To ignore file or folder from git we can write name of file/folder in .gitignore file
+git status
+.......
 
+To check the versions in git 
 
+git log
+.......
+
+To create version/commit all changes by git
+
+git commit -m "message"
