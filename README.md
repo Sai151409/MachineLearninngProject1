@@ -87,3 +87,28 @@ docker build -t <image name> : <tag name> .
 `````
 
 > Note : Image name for the docker file must be lowercase
+
+
+To check the docker images
+
+`````
+docker images
+`````
+
+Run docker Image
+
+``````
+docker run -p 5000:5000 -e PORT=5000 8cc871cd9739
+``````
+
+To check the containers in docker
+
+``````
+docker ps
+``````
+
+To stop the docker container
+
+```````
+docker stop <container ID>
+````````
