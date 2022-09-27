@@ -73,3 +73,17 @@ To check remote url
 `````
 git remove -v
 `````
+
+To setup CI/CD pipline in heroku we need 3 information
+
+1. Heroku Email = "sairamnaidu694@gmail.com"
+2. API key = "a988eaa1-c5a6-4f7f-ab34-c100a10e97bf"
+3. Heroku_app_name = "ml-project-11"
+
+
+Build Docker Image
+`````
+docker build -t <image name> : <tag name> .
+`````
+
+> Note : Image name for the docker file must be lowercase
