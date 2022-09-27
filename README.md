@@ -12,16 +12,18 @@ Required Softwares for Machine Learning Project
 Creating Conda Environment
 ````
 conda create -p venv python==3.7 -y 
-``````
-activate conda env
+`````
 
+activate conda env
+`````
 conda activate venv/
+`````
 
 OR
+`````
 
 conda activate venv
-
-
+`````
 intsall requirements file in project
 
 pip install -r requirements.txt
