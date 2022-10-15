@@ -1,4 +1,3 @@
-from xml.etree.ElementPath import find
 from setuptools import setup, find_packages
 from typing import List
 
