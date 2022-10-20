@@ -15,5 +15,5 @@ CURRENT_TIME_STAMP = f'{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}'
 
 TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
 TRAINING_PIPELINE_NAME_KEY = "pipeline_name"
-TRAINING_PIPELINE_ARTIFACT_KEY = "artifact_dir"
+TRAINING_PIPELINE_ARTIFACT_DIR_KEY = "artifact_dir"
 
