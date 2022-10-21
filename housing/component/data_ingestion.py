@@ -49,7 +49,7 @@ class DataIngestion:
             if os.path.exists(raw_data_dir):
                 os.remove(raw_data_dir)
                 
-            os.makedirs(raw_data_dir, exists = True)
+            os.makedirs(raw_data_dir, exist_ok=True)
             
             logging.info(f'Extracting tgz file : [{tgz_file_path}] into dir : [{raw_data_dir}]')
             
@@ -75,6 +75,7 @@ class DataIngestion:
                 bins = [0.0, 1.5, 3.0, 4.5, 6.0, np.inf],
                 labels = [1, 2, 3, 4, 5]
                 )
+            logging.info('Splitting data into train and test')
             
             strat_train_set = None
             strat_test_set = None
@@ -91,12 +92,12 @@ class DataIngestion:
             
             if strat_train_set is not None:
                 os.makedirs(self.data_ingestion_config.ingested_train_dir, exist_ok=True)
-                logging.info(f"Expotying data set into file : [{train_file_path}]")
+                logging.info(f"Exporting data set into file : [{train_file_path}]")
                 strat_train_set.to_csv(train_file_path, index=False)
             
             if strat_test_set is not None:
                 os.makedirs(self.data_ingestion_config.ingested_test_dir, exist_ok=True)
-                logging.info(f"Expotying data set into file : [{test_file_path}]")
+                logging.info(f"Exporting data set into file : [{test_file_path}]")
                 strat_test_set.to_csv(test_file_path, index=False)    
                 
             
