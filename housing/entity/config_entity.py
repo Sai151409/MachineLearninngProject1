@@ -8,7 +8,7 @@ DataIngestionConfig = namedtuple("DataIngestionConfig",
                                   "ingested_test_dir"])
 
 DataValidationConfig = namedtuple("DataValidationConfig", 
-                                  ["schema file path"])
+                                  ["schema_file_path",])
 
 DataTransformationConfig = namedtuple("DataTransformationConfig",
                                       ["add_bedroom_per_room",
