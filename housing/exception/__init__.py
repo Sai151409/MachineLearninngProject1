@@ -23,8 +23,9 @@ class HousingException(Exception):
         except_block_number = exec_tab.tb_frame.f_lineno
         file_name = exec_tab.tb_frame.f_code.co_filename
         error_message =  f"""
-        
-        Error has occured in script : [{file_name}], 
+        Error has occured in script : [
+            {file_name}
+            ], 
         at try block line number : [{try_block_number}] and 
         except block line number : [{except_block_number}] 
         error message : [{error_message}]"""
