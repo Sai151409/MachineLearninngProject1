@@ -1,5 +1,6 @@
 from housing.config.configuration import Configuration
 from housing.entity.config_entity import DataIngestionConfig
+from housing.component.data_validation import DataValidation
 from housing.entity.artifact_entity import DataIngestionArtifact
 from housing.logger import logging
 from housing.exception import HousingException
@@ -23,7 +24,11 @@ class Pipeline:
             raise HousingException(e, sys) from e
         
     def start_data_validation(self):
-        pass
+        try:
+            data_validation = DataIngestion(data_validation_config=self.config.get_data_validation_config())
+            return data_validation.intitate_data_validation()
+        except Exception as e:
+            raise HousingException(e, sys) from e
     
     def start_model_evaluation(self):
         pass
