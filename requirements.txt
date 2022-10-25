@@ -4,5 +4,6 @@ gunicorn
 pandas
 sklearn
 PyYAML
+evidently
 matplotlib
 -e .
