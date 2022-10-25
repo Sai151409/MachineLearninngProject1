@@ -1,6 +1,4 @@
 import os, sys
-
-from matplotlib import test
 from housing.entity.config_entity import DataValidationConfig
 from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 from housing.logger import logging
@@ -101,9 +99,12 @@ class DataValidation:
             train_df, test_df = self.get_train_and_test_df()
             profile.calculate(train_df, test_df)
             report = json.loads(profile.json())
+            report_file_path = self.data_validation_config.report_file_path
+            report_dir = os.path.dirname()
+            os.makedirs(report_dir, exist_ok=True)
             
-            with open(self.data_validation_config.report_file_path) as report_file:
-                json.dump(report, report_file, indent=6)
+            with open(report_file_path, "w") as report_file:
+                json.dump(report_file, indent=6)
             
             return report
             
@@ -115,13 +116,15 @@ class DataValidation:
         try:
             dashboard = Dashboard(tabs=DataDriftTab())
             train_df, test_df = self.get_train_and_test_df()
-            dashboard.calculate(dashboard)
-            dashboard.save(self.data_validation_config.report_page_file_path)
+            dashboard.calculate(train_df, test_df)
+            report_page_file_path = self.data_validation_config.report_page_file_path
+            report_page_dir = os.path.dirname()
+            os.makedirs(report_page_dir, exist_ok=True)
+            dashboard.save(report_page_file_path)
         except Exception as e:
-            raise HousingException(e, sys) from e
+            raise HousingException(e, sys) from e    
     
-    
-    def is_data_drift_found(self):
+    def is_data_drift_found(self) -> bool:
         try:
             report = self.get_save_data_drift_report()
             self.save_data_drift_page_report
@@ -130,13 +133,13 @@ class DataValidation:
             raise HousingException(e, sys) from e 
     
 
-    def intiate_data_validation(self):
+    def initiate_data_validation(self) -> DataValidationArtifact:
         try:
             self._is_train_test_file_exists()
             self.validate_dataset_schema()
             self.is_data_drift_found()
             
-            data_validattion_artifact = DataValidationArtifact(schema_file_path = self.data_validation_config.schema_file_path,
+            data_validation_artifact = DataValidationArtifact(schema_file_path = self.data_validation_config.schema_file_path,
                                                                report_file_path = self.data_validation_config.report_file_path,
                                                                report_page_file_path = self.data_validation_config.report_page_file_path,
                                                                is_validated = True,
