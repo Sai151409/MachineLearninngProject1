@@ -95,16 +95,16 @@ class DataValidation:
     
     def get_save_data_drift_report(self):
         try:
-            profile = Profile(sections=DataDriftProfileSection())
+            profile = Profile(sections=[DataDriftProfileSection()])
             train_df, test_df = self.get_train_and_test_df()
             profile.calculate(train_df, test_df)
             report = json.loads(profile.json())
             report_file_path = self.data_validation_config.report_file_path
-            report_dir = os.path.dirname()
+            report_dir = os.path.dirname(report_file_path)
             os.makedirs(report_dir, exist_ok=True)
             
             with open(report_file_path, "w") as report_file:
-                json.dump(report_file, indent=6)
+                json.dump(report, report_file, indent=6)
             
             return report
             
@@ -114,11 +114,11 @@ class DataValidation:
     
     def save_data_drift_page_report(self):
         try:
-            dashboard = Dashboard(tabs=DataDriftTab())
+            dashboard = Dashboard(tabs=[DataDriftTab()])
             train_df, test_df = self.get_train_and_test_df()
             dashboard.calculate(train_df, test_df)
             report_page_file_path = self.data_validation_config.report_page_file_path
-            report_page_dir = os.path.dirname()
+            report_page_dir = os.path.dirname(report_page_file_path)
             os.makedirs(report_page_dir, exist_ok=True)
             dashboard.save(report_page_file_path)
         except Exception as e:
@@ -127,7 +127,7 @@ class DataValidation:
     def is_data_drift_found(self) -> bool:
         try:
             report = self.get_save_data_drift_report()
-            self.save_data_drift_page_report
+            self.save_data_drift_page_report()
             return True
         except Exception as e:
             raise HousingException(e, sys) from e 
