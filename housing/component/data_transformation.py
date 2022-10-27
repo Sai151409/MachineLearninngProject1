@@ -1,5 +1,6 @@
 from housing.entity.config_entity import DataTransformationConfig
-from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
+from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact,\
+DataTransformationArtifact
 from housing.logger import logging
 from housing.exception import HousingException
 import os, sys
