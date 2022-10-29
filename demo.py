@@ -1,16 +1,18 @@
+from typing_extensions import dataclass_transform
 from housing.pipeline.pipeline import Pipeline
 from housing.logger import logging
 from housing.config.configuration import Configuration
 from housing.component.data_ingestion import DataIngestion
 from housing.component.data_validation import DataValidation
 from housing.config.configuration import Configuration
+from housing.component.data_transformation import DataTransformation
+
 
 def main():
     try:
-        #pipeline = Pipeline()
-        #pipeline.run_pipeline()
-        data_validation_config = Configuration().get_data_transformation_config()
-        print(data_validation_config)
+        pipeline = Pipeline()
+        k = pipeline.run_pipeline()
+        print(k)
     except Exception as e:
         logging.error(f"{e}")
         print(e)

@@ -29,7 +29,7 @@ class DataIngestion:
             
             if os.path.exists(tgz_download_dir):
                 os.remove(tgz_download_dir)
-            
+                
             os.makedirs(tgz_download_dir, exist_ok=True)
             
             hosuing_file_name = os.path.basename(download_url)

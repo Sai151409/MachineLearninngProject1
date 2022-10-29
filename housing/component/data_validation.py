@@ -145,6 +145,7 @@ class DataValidation:
                                                                is_validated = True,
                                                                message = "Data Validation Performed Successfully")
             logging.info(f'Data Validation_artifact : {data_validation_artifact}')
+            return data_validation_artifact
         except Exception as e:
             raise HousingException(e, sys) from e
     

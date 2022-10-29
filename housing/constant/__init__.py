@@ -45,3 +45,14 @@ DATA_TRANSFORMATION_TRAIN_DIR_NAME_KEY = 'transformed_train_dir'
 DATA_TRANSFORMATION_TEST_DIR_NAME_KEY = 'transformed_test_dir'
 DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY = 'preprocessing_dir'
 DATA_TRANSFORMATION_PREPROCESSING_FILE_NAME_KEY = 'preprocessed_object_file_name'
+
+
+COLUMN_TOTAL_ROOMS = "total_rooms"
+COLUMN_TOTAL_BEDROOMS = "total_bedrooms"
+COLUMN_POPULATION = "population"
+COLUMN_HOUSEHOLDS = "households"
+DATA_SCHEMA_COLUMNS_KEY = "columns"
+
+NUMERICAL_COLUMN_KEY = "numerical_columns"
+CATEGORICAL_COLUMN_KEY = "categorical_columns"
+TARGET_COLUMN_KEY = "target_column"
