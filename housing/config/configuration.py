@@ -108,7 +108,7 @@ class Configuration:
             
             transformed_test_dir = os.path.join(transformed_dir, data_transformation_info[DATA_TRANSFORMATION_TEST_DIR_NAME_KEY])
             
-            preprocessed_dir = os.path.join(artifact_dir, data_transformation_info[DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY])
+            preprocessed_dir = os.path.join(data_transformation_artifact_dir, data_transformation_info[DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY])
             
             preprocessed_object_file_path = os.path.join(preprocessed_dir, data_transformation_info[DATA_TRANSFORMATION_PREPROCESSING_FILE_NAME_KEY])
             
