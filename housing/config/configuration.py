@@ -1,5 +1,4 @@
 import sys, os
-
 from matplotlib import artist
 from housing.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig,\
     DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig, ModelPusherConfig, TrainingPipelineConfig
@@ -151,10 +150,41 @@ class Configuration:
             raise HousingException(e, sys) from e
     
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
-        pass
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            model_evaluation_artifact = os.path.join(artifact_dir,
+                                                     MODEL_EVALUATION_ARTIFACT_DIR)
+            model_evaluation_info = self.config_info[MODEL_EVALUATION_CONFIG_KEY]
+            model_evaluation_file_path = os.path.join(model_evaluation_artifact, 
+                                                      model_evaluation_info[MODEL_EVALUATION_FILE_NAME_KEY])
+            time_stamp = self.time_stamp
+            
+            response = ModelEvaluationConfig(
+                model_evaluation_file_path=model_evaluation_file_path,
+                time_stamp=time_stamp
+            )
+            
+            logging.info(f"Model Evaluation : {response}")
+            
+            return response   
+        except Exception as e:
+            raise HousingException(e, sys) from e
     
     def get_model_pusher_config(self) -> ModelPusherConfig:
-        pass
+        try:
+            time_stamp = f"{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            model_pusher_info = self.config_info[MODEL_PUSHER_CONFIG_KEY]
+            export_dir_path = os.path.join(ROOT_DIR, model_pusher_info[MODEL_PUSHER_MODEL_EXPORT_DIR_KEY],
+                                           time_stamp)
+            
+            model_pusher_config = ModelPusherConfig(export_dir_path=export_dir_path)
+            
+            logging.info(f"Model Pusher Config : {model_pusher_config}")
+            
+            return model_pusher_config
+
+        except Exception as e:
+            raise HousingException(e, sys) from e
     
     def get_training_pipeline_config(self) -> TrainingPipelineConfig:
         try:

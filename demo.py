@@ -1,4 +1,3 @@
-from typing_extensions import dataclass_transform
 from housing.pipeline.pipeline import Pipeline
 from housing.logger import logging
 from housing.config.configuration import Configuration

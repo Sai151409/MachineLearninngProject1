@@ -5,7 +5,7 @@ from housing.entity.model_factor import GridSearchBestModel, MetricInfoArtifact,
 from housing.logger import logging
 from housing.exception import HousingException
 from housing.entity.config_entity import ModelTrainerConfig
-from housing.entity.artifact_entity import DataTransformationArtifact, MOdelTrainerArtifact
+from housing.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact
 from housing.util.util import *
 from typing import List
 
@@ -109,7 +109,7 @@ class ModelTrainer:
             
             save_object(file_path=trained_model_file_path, obj=housing_model)
             
-            model_trainer_artifact = MOdelTrainerArtifact(
+            model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=trained_model_file_path,
                 train_rmse=metric_info.train_rmse,
                 test_rmse=metric_info.test_rmse,

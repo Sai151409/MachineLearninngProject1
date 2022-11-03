@@ -6,6 +6,21 @@ import dill
 from housing.constant import *
 import pandas as pd
 
+
+def write_yaml_file(file_path : str, data : dict = None):
+    """
+    Create a yaml file
+    file_path : str
+    data : dict
+    """
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "w") as yaml_file:
+            if data is not None:
+                yaml.dump(data, yaml_file)
+    except Exception as e:
+        raise HousingException(e, sys) from e
+
 def read_yaml_file(file_path) -> dict:
     """
     Read yaml file then returns the dict
@@ -82,6 +97,6 @@ def save_object(file_path : str, obj):
 def load_object(file_path : str):
     try:
         with open(file_path, "rb") as file_obj:
-            dill.load(file_obj)
+            return dill.load(file_obj)
     except Exception as e:
         raise HousingException(e, sys) from e

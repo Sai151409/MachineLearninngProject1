@@ -106,9 +106,9 @@ def evaluate_regression_model(model_list : list,
                 logging.info(f"Acceptable model found : {metric_info_artifact}")
             index += 1
             
-            if metric_info_artifact is None:
-                logging.info(f"No model is higher accuracy than the base accuracy")
-            return metric_info_artifact
+        if metric_info_artifact is None:
+            logging.info(f"No model is higher accuracy than the base accuracy")
+        return metric_info_artifact
     except Exception as e:
         raise HousingException(e, sys) from e 
                               
@@ -270,8 +270,7 @@ class ModelFactory:
                     param_grid_search=param_grid_search,
                     model_name=model_name
                 )
-            
-            initialized_model_list.append(initialized_model_config)
+                initialized_model_list.append(initialized_model_config)
             
             self.initialized_model_list = initialized_model_list
             
