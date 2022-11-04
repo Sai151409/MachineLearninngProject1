@@ -78,6 +78,11 @@ MODEL_EVALUATION_FILE_NAME_KEY = "model_evaluation_file_name"
 MODEL_PUSHER_CONFIG_KEY = "model_pusher_config"
 MODEL_PUSHER_MODEL_EXPORT_DIR_KEY = "model_export_dir"
 
+# Experimented related variables
+
+EXPERIMENT_DIR_KEY = "experiment"
+EXPERIMENT_FILE_NAME = "experiment.csv"
+
 
 BEST_MODEL_KEY = "best_model"
 HISTORY_KEY = "history"

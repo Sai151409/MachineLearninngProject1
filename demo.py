@@ -9,7 +9,7 @@ from housing.component.data_transformation import DataTransformation
 
 def main():
     try:
-        pipeline = Pipeline()
+        pipeline = Pipeline(config=Configuration())
         pipeline.run_pipeline()
     except Exception as e:
         logging.error(f"{e}")
