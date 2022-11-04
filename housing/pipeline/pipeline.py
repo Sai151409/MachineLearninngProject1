@@ -177,9 +177,9 @@ class Pipeline(Thread):
                 
                 os.makedirs(os.path.dirname(Pipeline.experiment_file_path), exist_ok=True)
                 if os.path.exists(Pipeline.experiment.experiment_file_path):
-                    experiment_dataframe.to_csv(Pipeline.experiment_file_path, mode = "a", index = False, header=True)
+                    experiment_dataframe.to_csv(Pipeline.experiment_file_path, mode = "a", index = False, header=False)
                 else:
-                    experiment_dataframe.to_csv(Pipeline.experiment_file_path, mode = "w", index=False, header=False)
+                    experiment_dataframe.to_csv(Pipeline.experiment_file_path, mode = "w", index=False, header=True)
             else:
                 logging.info('First Start Experiment')
         except Exception as e:
