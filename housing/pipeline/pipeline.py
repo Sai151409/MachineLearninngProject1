@@ -186,13 +186,12 @@ class Pipeline(Thread):
             raise HousingException(e, sys) from e
         
     @classmethod
-    
     def get_experiment_status(cls, limit : int = 5):
         try:
             if os.path.exists(Pipeline.experiment_file_path):
                 experiment_dataframe = pd.read_csv(Pipeline.experiment_file_path)
                 limit = -1 * int(limit)
-                return experiment_dataframe[limit:].drop(columns=["experiment_file_path", "initialization_time_stamp"], 
+                return experiment_dataframe[limit:].drop(columns=["experiment_file_path", "initialization_timestamp"], 
                                                          axis = 1)
             else:
                 return pd.DataFrame()
