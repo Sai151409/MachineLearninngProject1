@@ -1,1 +1,1 @@
-web: gunicorn app:app --workers 4
+web: bundle exec ruby app.rb -p $PORT
