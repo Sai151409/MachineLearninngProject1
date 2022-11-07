@@ -1,7 +1,3 @@
-from msilib import schema
-from numpy.lib.npyio import save
-from sklearn import preprocessing
-from sklearn.datasets import load_sample_image
 from housing.entity.config_entity import DataTransformationConfig
 from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact,\
 DataTransformationArtifact
