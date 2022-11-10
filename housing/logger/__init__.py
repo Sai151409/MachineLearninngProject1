@@ -25,7 +25,7 @@ def get_log_dataframe(filepath):
         for line in log_file.readlines():
             data.append(line.split("^;"))
     
-    log_df = pd.DataFrame()
+    log_df = pd.DataFrame(data=data)
     
     columns = ["Timestamp", "Log Level", "line_number", "file_name", "function_name", "message"]
     
