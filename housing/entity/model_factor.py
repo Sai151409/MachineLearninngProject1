@@ -188,7 +188,7 @@ class ModelFactory:
         try:
             # load the module, will raise ImportError if module cannot be loaded
             module = importlib.import_module(module_name)
-            # get the class, will raise AttributeError if class cannot be found
+                
             logging.info(f"Executing the command : import {class_name} form the module {module}")
             class_ref = getattr(module, class_name)
             return class_ref
